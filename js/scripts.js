@@ -83,15 +83,21 @@ $(function(){
 			newPizza.addTopping(sausage);
 		}
 		newOrder.addPizza(newPizza);
-		debugger;
-		$("#current-order").append("<li>" +
+		$(".current-order").append("<li>" +
 																	newPizza.size + " " +
 																	newPizza.formattedToppingsNames() + " " +
 																	"pizza: $" + newPizza.price +
 																"</li>")
-		$("#order-total").text(newOrder.cost);
+		$(".order-total").text(newOrder.cost);
 
 		event.preventDefault();
 	});
+
+	$("#place-order").click(function(){
+		$("#form-display").hide();
+		$("#thank-you").show();
+	});
+
+
 
 });

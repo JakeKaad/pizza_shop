@@ -11,37 +11,50 @@
     <div class="container">
       <div class=page-header>
         <h2>Pizzeria Iacobo</h2>
-    </div>
+      </div>
+      <div id="form-display">
+        <h3>Make a pizza!</h3></br>
+        <form id="pizza-form" class="form well">
+            <div class="form-group">
+              <label for="pizza-size">What size Pizza?</label></br>
+              <input type="radio" name="pizza-size" value="large"> Large - $14.00 (10 pieces)
+              <input type="radio" name="pizza-size" value="medium"> Medium - $11.00 (8 pieces)
+              <input type="radio" name="pizza-size" value="Small"> Small - $9.00 (6 pieces)
+            </div>
 
-    <div>
-      <h3>Make a pizza!</h3></br>
-      <form id="pizza-form" class="form well">
-          <div class="form-group">
-            <label for="pizza-size">What size Pizza?</label></br>
-            <input type="radio" name="pizza-size" value="large"> Large - $14.00 (10 pieces)
-            <input type="radio" name="pizza-size" value="Medium"> Medium - $11.00 (8 pieces)
-            <input type="radio" name="pizza-size" value="Small"> Small - $9.00 (6 pieces)
-          </div>
+            <div class="form-group">
+              <label for="toppings">Choose your toppings:</label><br>
+              <input type="checkbox" name="toppings" id="extraCheese"> Extra Cheese ($1.00)
+              <input type="checkbox" name="toppings" id="pepperoni"> Pepperoni ($2.00)
+              <input type="checkbox" name="toppings" id="mushrooms"> Mushrooms ($1.00)
+              <input type="checkbox" name="toppings" id="sausage"> Sausage ($2.00)
+            </div>
 
-          <div class="form-group">
-            <label for="toppings">Choose your toppings:</label><br>
-            <input type="checkbox" name="toppings" id="extraCheese"> Extra Cheese ($1.00)
-            <input type="checkbox" name="toppings" id="pepperoni"> Pepperoni ($2.00)
-            <input type="checkbox" name="toppings" id="mushrooms"> Mushrooms ($1.00)
-            <input type="checkbox" name="toppings" id="sausage"> Sausage ($2.00)
-          </div>
+            <button type="submit" class="btn btn-warning">Add pizza to order</button>
+        </form>
 
-          <button type="submit" class="btn btn-warning">Add pizza to order</button>
-      </form>
+        <div id="order-div" class="well">
+          <h3>Pizzas in order:</h3>
+          <ul class="current-order">
 
-      <div id="order-div" class="well">
-        <h3>Pizzas in order:</h3>
-        <ul id="current-order">
+          </ul>
 
-        </ul>
+          <h5>Order total: $<span class="order-total"></span></h5>
+          <button type ="submit" id="place-order" class='btn btn-success'>Place Order!</button>
+        </div>
+      </div>
 
-        <h5>Order total: $<span id="order-total"></span></h5>
-        <button type ="submit" id="place-order" class='btn btn-success'>Place Order!</button>
+      <div id="thank-you" class="jumbotron">
+        <h2>Thank you for your order!</h2>
+        <br>
+        <h4> Your order willl be ready shortly</h4>
+        <p> Order Summary: </p>
+        <p> Pizzas:
+          <ul class="current-order">
+
+          </ul>
+          <h5>Order total: $<span class="order-total"></span></h5>
+        </p>
       </div>
     </div>
   </body>
