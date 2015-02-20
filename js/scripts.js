@@ -33,6 +33,13 @@ var Pizza = {
 		this.toppings.push(topping);
 		this.price += topping.price;
 	},
+	formattedToppingsNames: function() {
+		var toppingNames = [];
+		this.toppings.forEach(function(topping){
+			toppingNames.push(topping.type)
+		});
+		return toppingNames.join( ", ")
+	},
 };
 
 var Order = {
@@ -44,3 +51,47 @@ var Order = {
 	}
 };
 
+
+$(function(){
+	var newOrder = Object.create(Order);
+
+	$("#pizza-form").submit(function(event){
+		var toppings = [];
+		
+		var size = $('input[name=pizza-size]:checked', '#pizza-form').val()
+		var newPizza = Object.create(Pizza);
+		newPizza.initialize(size);
+
+		if ($("#extraCheese").is(":checked")) {
+			var extraCheese = Object.create(Topping);
+			extraCheese.initialize("extra cheese", 1);
+			newPizza.addTopping(extraCheese);
+		}
+		if ($("#pepperoni").is(":checked")) {
+			var pepperoni = Object.create(Topping);
+			pepperoni.initialize("pepperoni", 2);
+			newPizza.addTopping(pepperoni);
+		}
+		if ($("#mushrooms").is(":checked")) {
+			var mushrooms = Object.create(Topping);
+			mushrooms.initialize("mushroom", 1);
+			newPizza.addTopping(mushrooms);
+		}
+		if ($("#sausage").is(":checked")) {
+			var sausage = Object.create(Topping);
+			sausage.initialize("sausage", 2);
+			newPizza.addTopping(sausage);
+		}
+		newOrder.addPizza(newPizza);
+		debugger;
+		$("#current-order").append("<li>" +
+																	newPizza.size + " " +
+																	newPizza.formattedToppingsNames() + " " +
+																	"pizza: $" + newPizza.price +
+																"</li>")
+		$("#order-total").text(newOrder.cost);
+
+		event.preventDefault();
+	});
+
+});
