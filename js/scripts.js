@@ -17,17 +17,30 @@ var Topping = {
 var Pizza = {
 	initialize: function(size) {
 		this.size = size;
-		this.price = 0;
+		this.setPrice();
+		this.toppings = [];
 	},
 	setPrice: function() {
 		if (this.size === "large") {
-			this.price += 14;
+			this.price = 14;
 		} else if (this.size === "medium") {
-			this.price += 11;
+			this.price = 11;
 		} else {
-			this.price += 9;
+			this.price = 9;
 		}
+	},
+	addTopping: function(topping) {
+		this.toppings.push(topping);
+		this.price += topping.price;
 	},
 };
 
-var order = {};
+var Order = {
+	pizzas: [],
+	cost: 0,
+	addPizza: function(pizza) {
+		this.pizzas.push(pizza);
+		this.cost += pizza.price;
+	}
+};
+
